@@ -4,7 +4,7 @@ import uuid
 from supabase import create_client
 
 # --- Page config ---
-st.set_page_config(page_title="AI Tutor", page_icon="🎓")
+st.set_page_config(page_title="พอย gpt", page_icon="🎓")
 
 st.markdown("""
 <style>
