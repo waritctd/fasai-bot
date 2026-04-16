@@ -134,7 +134,7 @@ if "messages" not in st.session_state:
 # ─────────────────────────────────────────
 
 with st.sidebar:
-    st.markdown("## 🎓 พอย gpt")
+    st.markdown("## 🎓 พอย")
     st.markdown("---")
 
     if st.button("✏️ New Chat", use_container_width=True):
