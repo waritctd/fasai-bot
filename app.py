@@ -58,17 +58,33 @@ N8N_WEBHOOK_URL = st.secrets["N8N_WEBHOOK_URL"]
 def call_n8n(user_message: str, session_id: str) -> str:
     payload = {
         "message": user_message,
-        "session_id": session_id  # used by Postgres Chat Memory node
+        "sessionId": session_id
     }
+
     try:
         res = requests.post(N8N_WEBHOOK_URL, json=payload, timeout=60)
         res.raise_for_status()
+
         data = res.json()
-        # Adjust key based on your n8n output field name
-        return data.get("output") or data.get("text") or str(data)
+
+        # If n8n returns a list
+        if isinstance(data, list):
+            if len(data) > 0:
+                item = data[0]
+                if isinstance(item, dict):
+                    return item.get("reply") or item.get("output") or item.get("text") or str(item)
+                return str(item)
+            return "No response returned."
+
+        # If normal dict
+        if isinstance(data, dict):
+            return data.get("reply") or data.get("output") or data.get("text") or str(data)
+
+        return str(data)
+
     except Exception as e:
         return f"⚠️ Error contacting backend: {e}"
-
+    
 # --- Greeting ---
 with st.chat_message("assistant"):
     st.markdown("""Hi there! 👋 I'm **AI Tutor**, your personal learning assistant.
