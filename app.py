@@ -13,6 +13,10 @@ footer {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)
 
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    st.image("static/รูป.jpg", use_container_width=True)
+
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
@@ -27,13 +31,15 @@ st.markdown("""
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .title-sub { font-size: 1em; font-weight: 200; color: #8F8F8F; }
+            
+
 </style>
 <div class="header-container">
     <div style="display:flex;gap:10px;align-items:baseline">
         <div style="font-size:2em;font-weight:600">Chat with</div>
-        <div class="title-main">AI Tutor</div>
+        <div class="title-main">Girlfriend GPT</div>
     </div>
-    <div class="title-sub">Powered by Chula AI</div>
+    <div class="title-sub">made by พ๊อย?</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -171,7 +177,7 @@ with st.sidebar:
 # No chat selected
 if st.session_state.current_chat_id is None:
     with st.chat_message("assistant"):
-        st.markdown("""Hi there! 👋 I'm **AI Tutor**, your personal learning assistant.
+        st.markdown("""Hi there! 👋 I'm **แฟน gpt**, your personal 'girlfriend' assistant.
 
 Click **✏️ New Chat** in the sidebar to get started, or select a previous chat.
 
@@ -179,6 +185,7 @@ You can ask me to:
 - Summarize a topic
 - Explain a concept step by step
 - Help with homework
+- รักคับ รักมาก รักสุดๆ วุ้ว
 
 Let's begin!""")
 
